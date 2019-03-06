@@ -271,7 +271,6 @@ class Swiper extends Component {
   }
 
   render () {
-    const isMobile = this.isMobile();
     return (
       <div className="active-swiper-container" ref="swiperContainer"
         style={{ width: clientW + 'px', height: this.props.clientH + 'px' }}

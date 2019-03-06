@@ -1,28 +1,43 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import Swiper from './components/Swiper'
 
 class App extends Component {
-  render() {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      index: 1
+    }
+  }
+
+  inputIndex (e) {
+    this.setState({ index: e.target.value })
+  }
+
+  goto () {
+    let index = parseInt(this.state.index)
+    index = this.refs.swiper.goto(index)
+    this.setState({ index })
+  }
+
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <div>
+        <Swiper
+          urlList={[
+            'https://dummyimage.com/375x100/FB8A80?text=1',
+            'https://dummyimage.com/375x100/29A90F?text=2',
+            'https://dummyimage.com/375x100/6F9DFF?text=3'
+          ]}
+          showCounter={true}
+          click={(i) => { console.log('click', i) }}
+          change={(i) => { console.log('change', i) }}
+          ref="swiper">
+        </Swiper>
+        <input type="number" onChange={this.inputIndex.bind(this)} value={this.state.index}></input>
+        <button onClick={this.goto.bind(this)}>goto</button>
+      </div>)
   }
 }
 
-export default App;
+export default App
