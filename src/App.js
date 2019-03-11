@@ -32,6 +32,7 @@ class App extends Component {
           showCounter={true}
           click={(i) => { console.log('click', i) }}
           change={(i) => { console.log('change', i) }}
+          autoPlayDelay={3000}
           ref="swiper">
         </Swiper>
         <input type="number" onChange={this.inputIndex.bind(this)} value={this.state.index}></input>

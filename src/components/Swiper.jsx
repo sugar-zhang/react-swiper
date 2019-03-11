@@ -96,9 +96,8 @@ class Swiper extends Component {
       if (!isSupportGetBoundingClientRect) {
         return touchStatus = 0
       }
-      let isTransToX = false
-      let transX = stPrevX = this.refs.sliderWrapper.getBoundingClientRect().left - this.refs.swiperContainer.getBoundingClientRect().left
-      this.setState({ isTransToX, transX })
+      stPrevX = this.refs.sliderWrapper.getBoundingClientRect().left - this.refs.swiperContainer.getBoundingClientRect().left
+      this.setState({ isTransToX: false, transX: stPrevX })
     }
     touchStatus = 1
     touchCount = e.touches.length
